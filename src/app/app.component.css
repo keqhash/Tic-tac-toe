@@ -13,7 +13,7 @@ footer {
     z-index: 9;
 }
 
-@media (max-width: 354px) {
+@media (max-width: 448px) {
     footer {
         height: 96px;
     }
