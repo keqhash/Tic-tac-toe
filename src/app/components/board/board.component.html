@@ -1,15 +1,15 @@
 <div *ngIf="gameSettings" class="{{'board-container ' + (isDarkTheme ? 'dark-theme' : 'light-theme')}}">
   <result-board *ngIf="gameStatus" [boardDetails]="gameStatus.boardDetails" [isDarkTheme]="isDarkTheme"
     [firstName]="gameSettings && gameSettings.firstName" [secondName]="gameSettings && gameSettings.secondName"></result-board>
-  <h3 *ngIf="!gameOver" class="text-monospace current-player-container">Current player: <b>{{ currentPlayer.name }}</b>
+  <h3 *ngIf="!gameOver" class="text-monospace current-player-container mt-2">Current player: <b>{{ currentPlayer.name }}</b>
   </h3>
   <div class="thinking-container m-auto" *ngIf="gameSettings.againstComputer">
     <img src="assets/images/thinking.gif" *ngIf="isThinking" class="thinking-image" alt="thinking..." />
   </div>
-  <h3 *ngIf="gameOver && lastWinner.name !== DRAW.name" class="text-success text-monospace game-result">{{lastWinner.name}} Wins
+  <h3 *ngIf="gameOver && lastWinner.name !== DRAW.name" class="text-success text-monospace game-result mt-2">{{lastWinner.name}} Wins
     <img src="assets/images/fireworks.png" />
   </h3>
-  <h3 *ngIf="gameOver && lastWinner.name == DRAW.name" class="text-danger text-monospace game-result">It's a draw!</h3>
+  <h3 *ngIf="gameOver && lastWinner.name == DRAW.name" class="text-warning text-monospace game-result mt-2">It's a draw!</h3>
 
   <div class="board-table mt-4" [class.locked]="boardLocked || gameOver"
     [ngStyle]="{'max-width': 100 + defaultBoardSize*50 + 'px', 'max-height': 100 + defaultBoardSize*50 + 'px'}">
