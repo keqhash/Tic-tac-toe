@@ -1,0 +1,33 @@
+<!-- Navigation -->
+<nav class="{{'navbar navbar-expand-lg static-top ' + (selectedThemeValue ? 'navbar-light bg-light' : 'navbar-dark bg-dark')}}">
+    <div class="container">
+        <a class="navbar-brand" [routerLink]="['']">
+            <img src="assets/images/xo_logo.png" alt="XO Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['']">Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/task-requirements']">Task Requirements</a>
+                </li>
+                <li class="nav-item ml-5 select">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="themeList">Theme</label>
+                          </div>
+                        <select id="themeList" class="custom-select" (change)="onThemeChange(selectedThemeValue)" [(ngModel)]="selectedThemeValue">
+                            <option *ngFor="let theme of themes" [ngValue]="theme.val" [selected]="theme.val == selectedThemeValue">{{theme.text}}</option>
+                        </select>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

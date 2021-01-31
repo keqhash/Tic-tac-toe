@@ -1,0 +1,41 @@
+.board-result-container {
+    position: absolute;
+    right: 5%;
+    width: 250px;
+}
+
+.card-body {
+    margin-top: 12px;
+}
+
+.card-body .results {
+    max-height: 200px;
+    overflow: auto;
+}
+
+th {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 93px;
+}
+
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+
+@media (max-width: 767px) {
+    .board-result-container {
+        position: relative;
+        right: auto !important;
+        margin: 0 auto;
+    }
+}
+@media (max-width: 900px) {
+    .board-result-container {
+        width: 220px;
+        right: 20px;
+    }
+}

@@ -1,0 +1,7 @@
+.task-req-page-container {
+    min-height: 100%;
+}
+
+.task-req-page-container .bottom-section p {
+    color: #212529;
+}

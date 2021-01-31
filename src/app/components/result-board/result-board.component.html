@@ -1,0 +1,31 @@
+<div class="board-result-container" *ngIf="boardDetails">
+  <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false"
+    aria-controls="collapseExample">
+    Game scores
+  </button>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+      <table class="table table-borderless col-12 m-0">
+        <thead>
+          <tr>
+            <th class="col-6 w-50">{{firstName}}</th>
+            <th class="col-6 w-50">{{secondName}}</th>
+          </tr>
+        </thead>
+      </table>
+      <div class="results">
+        <table class="table table-borderless col-12 mb-0">
+          <tbody>
+            <tr *ngFor="let player1Score of boardDetails.player1Scores; let i = index">
+              <td class="col-6 w-50">{{player1Score}}</td>
+              <td class="col-6 w-50">{{boardDetails.player2Scores[i]}}</td>
+            </tr>
+            <tr class="border-top border-dark font-weight-bold">
+              <td class="col-6 w-50 pb-0">{{finalScores[0]}}</td>
+              <td class="col-6 w-50 pb-0">{{finalScores[1]}}</td>
+            </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

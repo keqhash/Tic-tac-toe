@@ -1,0 +1,10 @@
+.footer-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 0 5px lightgray;
+}
+.itg-logo {
+    height: 34px;
+    padding-right: 20px;
+}

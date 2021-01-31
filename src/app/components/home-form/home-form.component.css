@@ -1,0 +1,26 @@
+
+.dark-theme .game-form {
+    border: 0.2em solid #f7f7f9;
+    background-color: #222222;
+}
+.light-theme .game-form {
+    border: 0.2em solid #666666;
+}
+.error-message {
+    color: #990033;
+    font-size: 14px;
+    height: 0;
+    font-weight: bold;
+}
+input.error {
+    border-color: #990033;
+}
+.board-size-label,
+.cells-label {
+    max-height: 38px;
+}
+@media (max-width: 420px) {
+    .board-size-label {
+        min-width: 113px;
+    }
+}

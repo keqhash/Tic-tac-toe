@@ -1,0 +1,42 @@
+<div *ngIf="gameSettings" class="{{'board-container ' + (isDarkTheme ? 'dark-theme' : 'light-theme')}}">
+  <result-board *ngIf="gameStatus" [boardDetails]="gameStatus.boardDetails" [isDarkTheme]="isDarkTheme"
+    [firstName]="gameSettings && gameSettings.firstName" [secondName]="gameSettings && gameSettings.secondName"></result-board>
+  <h3 *ngIf="!gameOver" class="text-monospace current-player-container">Current player: <b>{{ currentPlayer.name }}</b>
+  </h3>
+  <div class="thinking-container m-auto" *ngIf="gameSettings.againstComputer">
+    <img src="assets/images/thinking.gif" *ngIf="isThinking" class="thinking-image" alt="thinking..." />
+  </div>
+  <h3 *ngIf="gameOver && lastWinner.name !== DRAW.name" class="text-success text-monospace game-result">{{lastWinner.name}} Wins
+    <img src="assets/images/fireworks.png" />
+  </h3>
+  <h3 *ngIf="gameOver && lastWinner.name == DRAW.name" class="text-danger text-monospace game-result">It's a draw!</h3>
+
+  <div class="board-table mt-4" [class.locked]="boardLocked || gameOver"
+    [ngStyle]="{'max-width': 100 + defaultBoardSize*50 + 'px', 'max-height': 100 + defaultBoardSize*50 + 'px'}">
+    <img [hidden]="!(gameOver && lastWinner.name !== DRAW.name)" class="fireworks-animation" src="assets/images/fireworks.gif"
+    [ngStyle]="{'width': 100 + defaultBoardSize*50 + 'px', 'height': 100 + defaultBoardSize*50 + 'px'}"/>
+    <div *ngFor="let square of board; let i = index" class="square" [class.checked]="square.value != ''"
+      [class.winner]="square.winner" (click)="square_click(this.square, i)"
+      [ngStyle]="{'width': 'calc(100%/' + defaultBoardSize + ' - 2px)', 'height': 'calc(100%/' + defaultBoardSize + ' - 2px)'}">
+      {{ square.value }}
+    </div>
+  </div>
+
+  <div class="d-inline-flex row m-0 mb-3">
+    <button class="btn btn-primary mr-2 mr-sm-4" *ngIf="gameOver" (click)="newGame(true)">
+      Play again
+    </button>
+    <button class="btn btn-warning mr-2 mr-sm-4" (click)="undoLastMove()" [disabled]="this.lastSelectedIndex == -1"
+      *ngIf="!gameOver && (!gameSettings || !gameSettings.againstComputer)">
+      <img src="assets/images/undo.svg" class="undo-image" />
+    </button>
+    <button class="btn btn-danger" (click)="resetGame()" [disabled]="!canResetGame">
+      Reset game
+    </button>
+  </div>
+  <div class="d-flex row m-0 mb-4 col-12 flex-row justify-content-center">
+    <button class="btn btn-primary" (click)="exitGame()">
+      Exit and go to settings
+    </button>
+  </div>
+</div>

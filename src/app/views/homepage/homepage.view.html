@@ -1,0 +1,7 @@
+<div class="homepage-container mb-1">
+    <home-form [isDarkTheme]="isDarkTheme" (done)="setGameReady($event)"
+    [@fadeIn]="!gameReady ? 'enter' : 'leave'">
+    </home-form>
+    <board [isDarkTheme]="isDarkTheme" [displayBoard]="gameReady" (gameNotReady)="setGameReady($event)"
+    [@fadeIn]="gameReady ? 'enter' : 'leave'"></board>
+</div>
