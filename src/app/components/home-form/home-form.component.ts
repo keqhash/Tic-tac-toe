@@ -48,6 +48,9 @@ export class HomeFormComponent implements OnInit {
     this.formData.selectedCellsToWin = this.CellsToWin[0];
   }
   checkValidation() {
+    if (this.formData.againstComputer && !(this.formData.secondName || '').trim()) {
+      this.formData.secondName = 'PC';
+    }
     const data = this.formData;
     this.errorMsg = '';
     if (!(data.firstName || '').trim()) {
