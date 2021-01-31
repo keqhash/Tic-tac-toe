@@ -5,3 +5,11 @@
 .task-req-page-container .bottom-section p {
     color: #212529;
 }
+
+.dark-theme.task-req-page-container .bottom-section p {
+    color: lightgray;
+}
+
+.dark-theme .card-body {
+    background-color: #343a40 !important;
+}

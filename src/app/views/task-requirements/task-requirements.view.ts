@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SiteService } from 'src/app/services/site/site.service';
 
 @Component({
   selector: 'task-req-page',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskRequirementsPageView implements OnInit {
 
-  constructor() { }
+  isDarkTheme: boolean;
 
-  ngOnInit() { }
+  constructor(private siteService: SiteService) { }
+
+  ngOnInit() {
+    this.siteService.isDarkThemeEnabled().subscribe((data) => {
+      this.isDarkTheme = Boolean(data);
+    });
+  }
 }
