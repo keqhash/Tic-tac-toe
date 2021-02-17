@@ -1,15 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { fromEvent, Subscription } from 'rxjs';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.css']
 })
-export class BoardComponent implements OnInit {
+export class BoardComponent {
 
   // Support Theme mode for board.
   @Input() isDarkTheme: boolean;
@@ -47,33 +44,9 @@ export class BoardComponent implements OnInit {
   canResetGame: boolean;
   defaultBoardSize: number = 3;
   winningIndexes: Array<any>;
-  private backEvent: Subscription;
 
 
-  constructor(private cookieService: CookieService,
-    private router: Router,
-    private location: Location) { }
-
-  ngOnInit(): void {
-    this.preventBackButton();
-  }
-
-  ngOnDestroy(): void {
-    this.backEvent.unsubscribe();
-  }
-
-  preventBackButton() {
-    this.backEvent = fromEvent(window, 'popstate').subscribe((state) => {
-      if (this.router && this.router.url.indexOf('task-requirements') === -1 &&
-        (this.gameSettings && !this.gameSettings.againstComputer && this.lastSelectedIndex !== -1)) {
-        this.undoLastMove();
-        setTimeout(() => {
-          this.router.navigate(['/']);
-          history.pushState(null, null, '/')
-        }, 0);
-      }
-    });
-  }
+  constructor(private cookieService: CookieService) { }
 
   initComponent() {
     this.initGameSettings();
