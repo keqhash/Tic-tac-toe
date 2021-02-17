@@ -21,3 +21,9 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ## Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Publish to GitHub
+
+Run<br>
+` ng build --prod --base-href https://keqhash.github.io/Tic-tac-toe/`<br>
+`ngh --dir=dist/tic-tac-toe`
